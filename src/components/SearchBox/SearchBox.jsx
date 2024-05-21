@@ -1,15 +1,25 @@
+import { useDispatch } from "react-redux";
+import { setFilter } from "../../redux/actions";
+
 import s from "./SearchBox.module.css";
 import PropTypes from "prop-types";
 
-function SearchBox({ value, onFilter }) {
+function SearchBox() {
+  const dispatch = useDispatch();
+
+  const handleChang = (e) => {
+    const value = e.target.value;
+
+    dispatch(setFilter(value));
+  };
   return (
     <>
       <p className={s.text}>Find contacts by name</p>
       <input
         className={s.input}
         type='text'
-        value={value}
-        onChange={(e) => onFilter(e.target.value)}
+        /*/value={}/*/
+        onChange={handleChang}
       />
     </>
   );
