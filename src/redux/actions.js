@@ -1,19 +1,27 @@
 import { nanoid } from "nanoid";
+import { ADD, DELETE, FILTER } from "./constants";
 
-export const addContact = {
-  type: "contact/addcontact",
-  payload: {
-    id: nanoid(),
-    text: "User entered text",
-  },
+export const addContact = (name, number) => {
+  return {
+    type: ADD,
+    payload: {
+      id: nanoid(),
+      name: name,
+      number: number,
+    },
+  };
 };
 
-export const deleteContact = {
-  type: "contact/deleteContact",
-  payload: "Task id",
+export const deleteContact = (id) => {
+  return {
+    type: DELETE,
+    payload: id,
+  };
 };
 
-export const setFilter = {
-  type: "filter/setFilter",
-  payload: "Filter value",
+export const setFilter = (value) => {
+  return {
+    type: FILTER,
+    payload: value,
+  };
 };

@@ -22,22 +22,19 @@ function ContactForm() {
     number: "",
   };
 
-  console.log(newUser);
-
   const dispatch = useDispatch();
-  const hendelSubmit = (e) => {
-    e.preventDefault();
 
-    dispatch(addContact(newUser));
+  const handleSubmit = (values, { resetForm }) => {
+    dispatch(addContact(values.name, values.number));
 
-    e.target.reset();
+    resetForm();
   };
 
   return (
     <>
       <Formik
         initialValues={newUser}
-        onSubmit={hendelSubmit}
+        onSubmit={handleSubmit}
         validationSchema={validationSchema}
       >
         <Form className={s.form}>

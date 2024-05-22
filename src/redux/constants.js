@@ -1,5 +1,3 @@
-// export const statusFilters = Object.freeze({
-//   id: "id",
-//   name: "name",
-//   number: "number",
-// });
+export const ADD = "contact/addContact";
+export const DELETE = "contact/deleteContact";
+export const FILTER = "filter/setFilter";

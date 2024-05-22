@@ -1,10 +1,12 @@
-// import { useState, useEffect } from "react";
+import { useSelector } from "react-redux";
 import ContactForm from "./ContactForm/ContactForm";
 import ContactList from "./ContactList/ContactList";
 import SearchBox from "./SearchBox/SearchBox";
+import { getContacts, selectsFilter } from "../redux/selectors";
 
 function App() {
-  // початковий стан контактів
+  const contacts = useSelector(getContacts);
+  const filter = useSelector(selectsFilter);
 
   // const [contacts, setContacts] = useState(() => {
   //   try {
@@ -28,20 +30,16 @@ function App() {
   //   setContacts((prev) => [...prev, user]);
   // };
 
-  // const listFiltering = contacts.filter((contact) => {
-  //   return contact.name.toLowerCase().includes(filter.toLowerCase());
-  // });
-
-  // const handleDelete = (contactId) => {
-  //   setContacts((prev) => prev.filter((contsct) => contsct.id !== contactId));
-  // };
+  const listFiltering = contacts.filter((contact) => {
+    return contact.name.toLowerCase().includes(filter.toLowerCase());
+  });
 
   return (
     <>
       <h1>Phonebook</h1>
-      <ContactForm /*/ addUser={addUser}/*/ />
-      <SearchBox /*/value={filter} onFilter={setFilter} /*/ />
-      <ContactList /*/ contacts={listFiltering} onDelete={handleDelete}/*/ />
+      <ContactForm />
+      <SearchBox />
+      <ContactList contacts={listFiltering} />
     </>
   );
 }

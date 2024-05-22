@@ -6,12 +6,7 @@ import { FaPhone } from "react-icons/fa6";
 import s from "./Contact.module.css";
 
 function Contact({ id, name, number }) {
-  
   const dispatch = useDispatch();
-
-  const handleClick = () => {
-    dispatch(deleteContact(id));
-  };
 
   return (
     <>
@@ -23,7 +18,11 @@ function Contact({ id, name, number }) {
           <FaPhone /> {number}
         </p>
       </div>
-      <button className={s.button} onClick={() => handleClick} type='button'>
+      <button
+        className={s.button}
+        onClick={() => dispatch(deleteContact(id))}
+        type='button'
+      >
         Delete
       </button>
     </>
