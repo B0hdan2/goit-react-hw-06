@@ -1,11 +1,11 @@
-import { combineReducers, createStore } from "redux";
-import { contactReducer } from "./reducers";
 import { configureStore } from "@reduxjs/toolkit";
-
-const rootReducer = combineReducers({
-  contact: contactReducer,
-});
+import { contactsReducer } from "./contactsSlice";
+import { filterReducer } from "./filtersSlice";
 
 export const store = configureStore({
-  reducer: rootReducer,
+  reducer: {
+    contacts: contactsReducer,
+    filters: filterReducer,
+  },
+  // devTools: import.meta.env.MODE !== 'productions'
 });
